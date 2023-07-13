@@ -42,7 +42,7 @@ jobs:
         run: |
           cd docs
           docker build -t tempimage --build-arg "TAG=${BRANCH_NAME/\//-}" -f Dockerfile.temp .
-          CID=$(docker create tempimage -d --baseURL "${{ steps.pages.outputs.base_url }}/" hugoPublic)
+          CID=$(docker create tempimage -d hugoPublic --baseURL "${{ steps.pages.outputs.base_url }}/" --minify)
           docker start -a $CID
           docker cp $CID:/app/hugoPublic ${{ github.workspace }}/docs/hugo/public
           docker rm -v $CID
