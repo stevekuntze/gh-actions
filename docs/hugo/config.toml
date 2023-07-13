@@ -1,0 +1,4 @@
+baseURL = 'https://docs.dyps.org/'
+languageCode = 'en-us'
+title = 'SDyps'
+theme = 'hugo-book'

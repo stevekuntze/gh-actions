@@ -1,0 +1,3 @@
+ARG TAG=dummy
+FROM ghcr.io/otto-ec/dyps-strg_sdyps/hugo:${TAG}
+COPY --chown=app:app hugo ./

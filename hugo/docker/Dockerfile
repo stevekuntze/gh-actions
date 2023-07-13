@@ -1,0 +1,12 @@
+FROM debian:bookworm-slim
+RUN echo 'Acquire::Retries "10";' > /etc/apt/apt.conf.d/80-retries
+RUN apt-get update \
+    && apt-get upgrade -y \
+    && apt-get -y --no-install-recommends install hugo \
+    && apt autoremove -y --purge \
+    && rm -rf /var/cache/apt/archives/* \
+    && rm -rf /var/lib/apt/lists/*
+RUN groupadd -r app && useradd --no-log-init -r -g app app
+USER app:app
+WORKDIR /app
+ENTRYPOINT ["hugo"]
