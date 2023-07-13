@@ -2,7 +2,7 @@ name: Build, upload and deploy github pages
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "test-branch" ]
   workflow_dispatch:
 
 permissions:
