@@ -50,6 +50,7 @@ jobs:
           path: ${{ github.workspace }}/docs/hugo/public
   # Deployment job
   deploy-documentation-pages:
+    if: github.ref_name == 'master'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
