@@ -18,7 +18,8 @@ In dem Dokument wird die Dynamische Preissteuerung beschrieben.
 **WICHTIG**: Die Abhängigkeiten sind größtenteils durch SpringBoot gemanaged und deshalb nicht immer auf dem neusten
 Stand.
 
-![test](/test_image.png)
+![test](img/test_image.png)
+![test2](/test_image2.png)
 
 
 ## Links
