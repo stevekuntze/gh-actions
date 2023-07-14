@@ -37,5 +37,6 @@ jobs:
         with:
           context: ./hugo/docker
           push: true
+          file: HugoDockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
