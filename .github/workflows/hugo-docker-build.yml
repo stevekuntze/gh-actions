@@ -35,8 +35,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: ./hugo/docker
+          context: ./docs/utilities
           push: true
-          file: ./hugo/docker/HugoDockerfile
+          file: ./docs/utilities/HugoDockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
