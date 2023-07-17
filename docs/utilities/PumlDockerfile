@@ -8,4 +8,6 @@ RUN apt-get update \
 RUN groupadd -r app && useradd --no-log-init -r -g app app
 USER app:app
 WORKDIR /app
-ENTRYPOINT ["java"]
+RUN mkdir -p "output"
+COPY ../plantuml ./
+ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "-o", "output", "."]
