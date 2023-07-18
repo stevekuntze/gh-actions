@@ -1,0 +1,12 @@
+@startuml
+title Verhalten im Notfall
+
+participant Start as S
+participant Es brennt! as B
+participant Tee as T
+
+S --> B: Situation analysieren
+B --> T: Tee trinken!
+T --> S: This is fine!
+
+@enduml
