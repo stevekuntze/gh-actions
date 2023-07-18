@@ -1,4 +1,3 @@
-baseUrl = "https://stevekuntze.github.io/gh-actions/"
 languageCode = 'en-us'
 title = 'SDyps'
 theme = 'hugo-book'
