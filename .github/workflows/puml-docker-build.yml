@@ -1,4 +1,4 @@
-name: Build and Push PUML Image
+name: Build and Push Puml Image
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: ./docs/utilities
+          context: ./docs
           push: true
           file: ./docs/utilities/PumlDockerfile
           tags: ${{ steps.meta.outputs.tags }}
