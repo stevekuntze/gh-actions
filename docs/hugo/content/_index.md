@@ -6,6 +6,6 @@ title: Index
 
 In dem Dokument wird die dynamische Preissteuerung (strategische) beschrieben.
 
-![test_img](img/test_image.png)
+![test_img](img/test_img.png)
 
 ![test_puml](puml_img/test_puml.png)
