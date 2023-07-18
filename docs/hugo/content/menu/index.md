@@ -3,4 +3,4 @@ headless = true
 +++
 
 - [Übersicht](/gh-actions)
-- [Netzwerk](/gh-actions/code_of_conduct)
+- [Code of Conduct](/gh-actions/code_of_conduct)
