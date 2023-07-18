@@ -38,7 +38,7 @@ jobs:
         run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${BRANCH_NAME/\//-}
       - name: Run Puml Container to render and copy image files
         run: |
-          CID=$(docker create ghcr.io/stevekuntze/gh-actions/puml:master)
+          CID=$(docker create ghcr.io/stevekuntze/gh-actions/puml:${BRANCH_NAME/\//-})
           docker start -a $CID
           docker cp $CID:/app/output/. ${{ github.workspace }}/docs/hugo/static/puml_img
           docker rm -v $CID
