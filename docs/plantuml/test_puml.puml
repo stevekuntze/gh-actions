@@ -2,7 +2,7 @@
 title Verhalten im Notfall
 
 participant Start as S
-participant Es brennt as B
+participant Brand as B
 participant Tee as T
 
 S --> B: Situation analysieren
