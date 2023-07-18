@@ -36,7 +36,13 @@ jobs:
       - name: Pull Hugo Image
         # ${BRANCH_NAME/\//-} to replace all / (slashes) with dashes (-); slashes are not allowed in image tags
         run: docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${BRANCH_NAME/\//-}
-      - name: Run Hugo Image and build pages
+      - name: Run Puml Container to render and copy image files
+        run: |
+          CID=$(docker create ghcr.io/stevekuntze/gh-actions/puml:master)
+          docker start $CID
+          docker cp $CID:/app/output/. ${{ github.workspace }}/docs/hugo/static/puml_img
+          docker rm -v $CID
+      - name: Run Hugo Container and build pages
         # build temporary container (with the hugo image as base) to copy documentation files, build pages and
         # copy back the rendered files; this way no docker-in-docker or root user is necessary
         run: |
