@@ -2,5 +2,5 @@
 headless = true
 +++
 
-- [Übersicht](/)
-- [Netzwerk](/code_of_conduct)
+- [Übersicht](/gh-actions)
+- [Netzwerk](/gh-actions/code_of_conduct)
