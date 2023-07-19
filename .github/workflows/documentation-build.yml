@@ -13,7 +13,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}/hugo
+  IMAGE_PUML_NAME: ${{ github.repository }}/puml
   BRANCH_NAME: "${{github.ref_name}}"
 
 jobs:
@@ -35,7 +35,7 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Run Puml Container to render and copy image files
         run: |
-          CID=$(docker create --pull always ghcr.io/stevekuntze/gh-actions/puml:${BRANCH_NAME/\//-})
+          CID=$(docker create --pull always ${{ env.REGISTRY }}/${{ env.IMAGE_PUML_NAME }}:${BRANCH_NAME/\//-})
           docker start -a $CID
           docker cp $CID:/app/output/. ${{ github.workspace }}/docs/hugo/static/puml_img
           docker rm -v $CID
@@ -45,7 +45,7 @@ jobs:
         run: |
           cd docs
           docker build -t tempimage --build-arg "TAG=${BRANCH_NAME/\//-}" -f Dockerfile.temp .
-          CID=$(docker create --pull always tempimage -d hugoPublic --baseURL "${{ steps.pages.outputs.base_url }}/" --minify)
+          CID=$(docker create tempimage -d hugoPublic --baseURL "${{ steps.pages.outputs.base_url }}/" --minify)
           docker start -a $CID
           docker cp $CID:/app/hugoPublic ${{ github.workspace }}/docs/hugo/public
           docker rm -v $CID
