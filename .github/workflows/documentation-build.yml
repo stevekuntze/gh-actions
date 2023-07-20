@@ -37,7 +37,7 @@ jobs:
         run: |
           cd docs
           docker build --pull -t pumlimage -f PumlDockerfile .
-          CID=$(docker create --user 1001 pumlimage)
+          CID=$(docker create pumlimage)
           docker start $CID
           docker cp $CID:/app/output/. ${{ github.workspace }}/docs/hugo/static/puml_img
           docker rm -v $CID

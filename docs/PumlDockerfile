@@ -11,4 +11,5 @@ RUN chown app:app "app/output"
 USER app:app
 WORKDIR /app
 COPY plantuml ./
+RUN echo $(ls -la ./)
 ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "-o", "output", "."]
