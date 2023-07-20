@@ -38,8 +38,8 @@ jobs:
           cd docs
           docker build --pull -t pumlimage -f PumlDockerfile .
           CID=$(docker create pumlimage)
-          docker start $CID
-          docker cp $CID:/app/output/. ${{ github.workspace }}/docs/hugo/static/puml_img
+          docker start -a $CID
+          docker cp $CID:/app/output ${{ github.workspace }}/docs/hugo/static/puml_img
           docker rm -v $CID
       - name: Run Hugo Container and build pages
         # build temporary container (with the hugo image as base) to copy documentation files, build pages and
