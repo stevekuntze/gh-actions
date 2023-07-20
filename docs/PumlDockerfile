@@ -11,9 +11,9 @@ RUN chown app:app app/output
 #RUN echo $(ls -la ./)
 RUN echo $(ls -la ./app)
 USER app:app
-WORKDIR /app
-COPY --chown=app:app plantuml ./
+RUN cd app
 RUN echo $(ls -la ./)
+COPY --chown=app:app plantuml ./
 USER root:root
 RUN echo $(ls -la ./)
 RUN cd ../
