@@ -35,8 +35,8 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Run Puml Container to render and copy image files
         run: |
-          cd docs/utilities
-          docker build --pull -t pumlimage -f PumlDockerfile .
+          cd docs
+          docker build --pull -t pumlimage -f ${{ github.workspace }}/docs/utilities/PumlDockerfile .
           CID=$(docker create pumlimage)
           docker start -a $CID
           docker cp $CID:/app/output ${{ github.workspace }}/docs/hugo/static/puml_img
