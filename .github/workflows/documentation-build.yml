@@ -35,8 +35,10 @@ jobs:
         uses: actions/configure-pages@v3
       - name: Run Puml Container to render and copy image files
         run: |
-          CID=$(docker create --pull always ${{ env.REGISTRY }}/${{ env.IMAGE_PUML_NAME }}:${BRANCH_NAME/\//-})
-          docker start -a $CID
+          cd docs
+          docker build --pull -t pumlimage -f PumlDockerfile .
+          CID=$(docker create pumlimage)
+          docker start $CID
           docker cp $CID:/app/output/. ${{ github.workspace }}/docs/hugo/static/puml_img
           docker rm -v $CID
       - name: Run Hugo Container and build pages

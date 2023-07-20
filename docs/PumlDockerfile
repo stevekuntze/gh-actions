@@ -6,8 +6,9 @@ RUN apt-get update \
     && rm -rf /var/cache/apt/archives/* \
     && rm -rf /var/lib/apt/lists/*
 RUN groupadd -r app && useradd --no-log-init -r -g app app
+RUN mkdir -p "app/output"
+RUN chown app:app "app/output"
 USER app:app
 WORKDIR /app
-RUN mkdir -p "output"
-COPY ../plantuml ./
+COPY plantuml ./
 ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "-o", "output", "."]
