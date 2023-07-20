@@ -12,7 +12,7 @@ RUN groupadd -r app && useradd --no-log-init -r -g app app
 #RUN echo $(ls -la ./app)
 USER app:app
 WORKDIR /app
-COPY plantuml ./
+COPY --chown=app:app plantuml ./
 #RUN echo $(ls -la ./)
 ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "./"]
 RUN echo $(ls -la ./)
