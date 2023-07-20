@@ -14,5 +14,5 @@ USER app:app
 WORKDIR /app
 COPY plantuml ./
 #RUN echo $(ls -la ./)
-ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "-o", "output", "."]
+ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "."]
 RUN echo $(ls -la ./)
