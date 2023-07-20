@@ -10,5 +10,5 @@ WORKDIR /app
 RUN mkdir -p output
 RUN chown app:app output
 USER app:app
-COPY --chown=app:app plantuml ./
+COPY --chown=app:app ../plantuml ./
 ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "-o", "output", "."]
