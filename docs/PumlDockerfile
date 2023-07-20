@@ -12,7 +12,6 @@ RUN echo $(ls -la ./)
 RUN echo $(ls -la ./app)
 USER app:app
 WORKDIR /app
-RUN mkdir -p output2
 COPY plantuml ./
 RUN echo $(ls -la ./)
 ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "-o", "output", "."]
