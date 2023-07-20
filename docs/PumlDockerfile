@@ -17,6 +17,7 @@ RUN echo $(ls -la ./)
 USER root:root
 RUN echo $(ls -la ./)
 RUN cd ../
+RUN pwd
 RUN echo $(ls -la ./)
 ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "-o", "output"]
 RUN echo $(ls -la ./)
