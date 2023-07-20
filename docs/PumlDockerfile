@@ -14,7 +14,8 @@ RUN echo $(ls -la ./)
 RUN echo $(ls -la ./app)
 USER app:app
 RUN pwd
-RUN cd app
+WORKDIR /app
+#RUN cd app
 RUN pwd
 RUN echo $(ls -la ./)
 COPY --chown=app:app plantuml ./
