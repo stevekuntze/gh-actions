@@ -6,17 +6,19 @@ RUN apt-get update \
     && rm -rf /var/cache/apt/archives/* \
     && rm -rf /var/lib/apt/lists/*
 RUN groupadd -r app && useradd --no-log-init -r -g app app
-RUN mkdir -p app/output
+RUN pwd
+RUN echo $(ls -la ./)
+RUN mkdir -p ./app/output
 RUN chown app:app app/output
 RUN echo $(ls -la ./)
 RUN echo $(ls -la ./app)
 USER app:app
+RUN pwd
 RUN cd app
+RUN pwd
 RUN echo $(ls -la ./)
 COPY --chown=app:app plantuml ./
 USER root:root
-RUN echo $(ls -la ./)
-RUN cd ../
 RUN pwd
 RUN echo $(ls -la ./)
 ENTRYPOINT ["java", "-jar", "../opt/plantuml.jar", "-o", "output"]
