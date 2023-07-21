@@ -3,7 +3,7 @@ name: Delete all untagged images from ghcr.io
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 4 * * 3'
+    - cron: '0 4 * * 20'
 
 permissions:
   contents: read
