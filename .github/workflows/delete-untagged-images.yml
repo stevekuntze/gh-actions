@@ -13,6 +13,12 @@ jobs:
   delete-imgages:
     runs-on: ubuntu-latest
     steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Delete all containers from repository without tags
         uses: Chizkiyahu/delete-untagged-ghcr-action@v2
         with:
