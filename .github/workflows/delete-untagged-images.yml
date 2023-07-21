@@ -1,0 +1,29 @@
+name: Delete all unteggged images from ghcr.io
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * 3'
+
+permissions:
+  contents: read
+  packages: read
+
+jobs:
+  delete-imgages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Delete all containers from repository without tags
+        uses: Chizkiyahu/delete-untagged-ghcr-action@v2
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository_owner: ${{ github.repository_owner }}
+          repository: ${{ github.repository }}
+          untagged_only: true
+          owner_type: org
