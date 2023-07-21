@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: read
-  packages: delete
+  packages: admin
 
 env:
   REGISTRY: ghcr.io
