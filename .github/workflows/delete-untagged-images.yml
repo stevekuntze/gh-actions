@@ -9,6 +9,9 @@ permissions:
   contents: read
   packages: write
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
   delete-imgages:
     runs-on: ubuntu-latest
