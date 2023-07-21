@@ -1,4 +1,4 @@
-name: Delete all unteggged images from ghcr.io
+name: Delete all untagged images from ghcr.io
 
 on:
   workflow_dispatch:
@@ -8,6 +8,9 @@ on:
 permissions:
   contents: read
   packages: read
+
+env:
+  REGISTRY: ghcr.io
 
 jobs:
   delete-imgages:
