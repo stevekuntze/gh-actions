@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: read
-  packages: admin
+  packages: write
 
 env:
   REGISTRY: ghcr.io
